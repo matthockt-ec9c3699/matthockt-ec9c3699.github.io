@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>糖心免费版-短剧免费全集_热门短剧推荐与追更指南</title>
+  <meta name="description" content="糖心免费版是短剧爱好者的一站式内容站，提供热门短剧免费全集推荐、最新更新、深度解析、角色分析和追更指南。页面涵盖都市甜宠、古装逆袭、悬疑脑洞等类型，帮助用户高效筛选和收藏优质短剧内容。">
+  <meta name="keywords" content="糖心免费版,短剧免费全集,热门短剧推荐,短剧追更指南,糖心短剧">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23f24e6c'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3E糖%3C/text%3E%3C/svg%3E">
+  <style>
+    /* ----- 全局变量与重置 ----- */
+    :root {
+      --bg-body: #fbf8f2;
+      --bg-card: #ffffff;
+      --bg-soft: #fff4ec;
+      --text-primary: #1e1b1a;
+      --text-secondary: #5e5550;
+      --text-muted: #8d827c;
+      --accent: #e14b5a;
+      --accent-soft: #fde8e8;
+      --accent-glow: rgba(225, 75, 90, 0.12);
+      --border-light: #ede6e0;
+      --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 16px 28px -6px rgba(0, 0, 0, 0.08);
+      --radius-card: 18px;
+      --radius-sm: 12px;
+      --radius-pill: 40px;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --max-width: 1200px;
+      --gap: 24px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-stack);
+      background: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul, ol {
+      list-style: none;
+    }
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* ----- 通用卡片 & 按钮 ----- */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .pill {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.02em;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title span {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: var(--accent-soft);
+      padding: 2px 12px;
+      border-radius: 30px;
+      letter-spacing: 0;
+    }
+    .section-sub {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    /* ----- 导航 ----- */
+    .nav-bar {
+      background: rgba(251, 248, 242, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 12px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+    .logo-icon {
+      background: var(--accent);
+      color: white;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1.4rem;
+      box-shadow: 0 6px 12px var(--accent-glow);
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .nav-links a {
+      transition: color 0.15s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    /* ----- 首屏 Banner (F 杂志专题型 + 大标题) ----- */
+    .hero {
+      margin: 32px 0 24px;
+      background: linear-gradient(135deg, #fff2ec 0%, #ffffff 80%);
+      border-radius: 36px;
+      padding: 40px 40px 36px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.02);
+      border: 1px solid #ffedea;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "🍬";
+      position: absolute;
+      right: -10px;
+      bottom: -30px;
+      font-size: 12rem;
+      opacity: 0.05;
+      pointer-events: none;
+      transform: rotate(12deg);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      max-width: 800px;
+      margin-bottom: 16px;
+    }
+    .hero h1 strong {
+      color: var(--accent);
+      background: linear-gradient(120deg, #ffe3e0 0%, #ffe3e0 40%);
+      padding: 0 6px;
+      border-radius: 6px;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      display: flex;
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      max-width: 500px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border-light);
+      margin-bottom: 28px;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 0.95rem;
+      background: transparent;
+      color: var(--text-primary);
+    }
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+    .search-box button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: default;
+      letter-spacing: 0.02em;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-tags a {
+      background: white;
+      border: 1px solid var(--border-light);
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .hero-tags a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #fff6f5;
+    }
+    /* ----- 内容简介 ----- */
+    .intro-section {
+      margin: 48px 0;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--gap);
+      align-items: start;
+    }
+    .intro-left h2 {
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .intro-left .accent-line {
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    .intro-right p {
+      color: var(--text-secondary);
+      margin-bottom: 1.2em;
+      font-size: 1.02rem;
+    }
+    /* ----- 热门推荐卡片网格 (封面卡片) ----- */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .rec-card {
+      padding: 18px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .rec-cover {
+      height: 110px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fce4e0, #ffd9d4);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: #b95b5b;
+    }
+    .rec-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0 12px;
+    }
+    .rec-tags span {
+      background: #f3f0ed;
+      border-radius: 30px;
+      padding: 2px 10px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .rec-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .rec-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      padding-top: 12px;
+    }
+    /* ----- 最新更新列表 ----- */
+    .update-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .update-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: white;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      transition: all 0.15s;
+    }
+    .update-item:hover {
+      border-color: #fcc;
+      background: #fffcfb;
+    }
+    .update-badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    .update-content {
+      flex: 1;
+    }
+    .update-content h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .update-content p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    /* ----- 分类入口 (8个) ----- */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .cat-item {
+      background: white;
+      border-radius: 40px;
+      padding: 14px 18px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      transition: 0.15s;
+    }
+    .cat-item:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #fff8f7;
+    }
+    /* ----- 深度解析正文 ----- */
+    .deep-dive {
+      background: #fffaf7;
+      border-radius: 32px;
+      padding: 40px;
+      margin: 48px 0;
+      border: 1px solid #ffedea;
+    }
+    .deep-dive h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .deep-dive p {
+      color: var(--text-secondary);
+      margin-bottom: 1.4em;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .deep-dive strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    /* ----- FAQ 双栏问答 ----- */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      border: 1px solid var(--border-light);
+    }
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    .faq-item h3::before {
+      content: "❓";
+      font-size: 1rem;
+    }
+    .faq-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    /* ----- 评论 (社区短评风格) ----- */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .comment-item {
+      background: white;
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      border: 1px solid var(--border-light);
+    }
+    .comment-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fce4e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+    .comment-user {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .comment-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+    .comment-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    /* ----- 资讯卡片 ----- */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .news-card {
+      background: white;
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+    .news-card .date {
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .news-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 8px 0 10px;
+    }
+    .news-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    /* ----- 页脚 ----- */
+    .footer {
+      background: #1e1b1a;
+      color: #b9aaa0;
+      padding: 48px 0 32px;
+      margin-top: 60px;
+      border-radius: 40px 40px 0 0;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer h5 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    .footer-links a:hover {
+      color: #f5a9b2;
+    }
+    .copyright {
+      border-top: 1px solid #2e2a28;
+      margin-top: 40px;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #7a6e68;
+    }
+    /* ----- 响应式 ----- */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .intro-section { grid-template-columns: 1fr; gap: 16px; }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 28px 20px; }
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+      .update-list { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .deep-dive { padding: 24px; }
+      .section-title { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .grid-4 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .search-box { flex-direction: column; padding: 12px; background: transparent; border: none; box-shadow: none; gap: 10px; }
+      .search-box input { background: white; border: 1px solid var(--border-light); border-radius: 40px; padding: 12px 18px; }
+      .search-box button { width: 100%; }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <!-- 导航 -->
+  <nav class="nav-bar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-icon">糖</span>
+        糖心免费版
+      </div>
+      <div class="nav-links">
+        <a href="/#hot-section">热门推荐</a>
+        <a href="/#update-section">最新更新</a>
+        <a href="/#category-section">分类入口</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#faq-section">常见问题</a>
+        <a href="/#comment-section">用户评论</a>
+        <a href="/#news-section">相关资讯</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- 首屏 Banner -->
+    <section class="hero">
+      <h1><strong>糖心免费版</strong><br>热门短剧免费全集·每日追更推荐</h1>
+      <div class="hero-desc">
+        从都市甜宠到古装逆袭，从悬疑脑洞到现实共鸣。聚合高口碑短剧内容，提供清晰分类、更新动态和深度解析，帮助你在碎片时间里找到值得追的那一部。
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索剧名、演员或类型，如“闪婚后”" aria-label="搜索短剧">
+        <button>搜索</button>
+      </div>
+      <div class="hero-tags">
+        <a href="/#hot-section">🔥 本周热播榜</a>
+        <a href="/#update-section">📺 今日更新</a>
+        <a href="/#category-section">甜宠</a>
+        <a href="/#category-section">逆袭</a>
+        <a href="/#category-section">悬疑</a>
+        <a href="/#category-section">古装</a>
+        <a href="/#deep-dive">新手指南</a>
+        <a href="/#faq-section">常见问题</a>
+      </div>
+    </section>
+
+    <!-- 内容简介 -->
+    <section class="intro-section" id="intro-section">
+      <div class="intro-left">
+        <h2>为什么短剧爱好者都在看<br>「糖心免费版」</h2>
+        <div class="accent-line"></div>
+      </div>
+      <div class="intro-right">
+        <p><strong>糖心免费版</strong>不是一个简单的剧集列表，而是一个围绕“短剧发现”构建的内容参考站。我们理解用户搜这个词时，往往想快速找到可看、好评、更新稳定的短剧资源，同时也希望避免踩坑。因此页面从类型、热度、评价、更新节奏等多个维度整理信息。</p>
+        <p>这里适合三类人：一是刚接触短剧、想按类型入门的新观众；二是追更多部作品、需要集中管理进度的老剧迷；三是想了解短剧市场趋势的内容从业者。页面提供深度解析、角色看点、FAQ以及真实用户评论，你可以把它当作一个短剧资料库，随时翻阅、对比和收藏。</p>
+        <p>所有内容均基于公开信息和编辑观察，不提供盗版资源链接，仅作为内容推荐与讨论社区，帮助你在信息海洋中更高效地决策。</p>
+      </div>
+    </section>
+
+    <!-- 热门推荐 -->
+    <section id="hot-section" style="margin: 48px 0;">
+      <div class="section-title">🔥 热门短剧推荐 <span>本周高热度</span></div>
+      <div class="section-sub">根据播放讨论热度、完播率和编辑口碑综合整理，排名不分先后</div>
+      <div class="grid-4">
+        <article class="card rec-card">
+          <div class="rec-cover">💍</div>
+          <h3>闪婚后，大叔每天狂宠我</h3>
+          <div class="rec-tags"><span>甜宠</span><span>先婚后爱</span><span>大叔</span></div>
+          <p class="rec-desc">意外闪婚却发现老公是隐藏大佬，日常互怼又疯狂撒糖，节奏轻快每集都有小高潮。</p>
+          <div class="rec-meta"><span>🔥 热度 9.2w</span><span>更新至24集</span></div>
+        </article>
+        <article class="card rec-card">
+          <div class="rec-cover">⚔️</div>
+          <h3>重生之王妃要休夫</h3>
+          <div class="rec-tags"><span>古装</span><span>重生</span><span>逆袭</span></div>
+          <p class="rec-desc">前世被辜负，今生开局就休夫搞事业，爽点密集，女主智商在线，服化道也很用心。</p>
+          <div class="rec-meta"><span>🔥 热度 8.7w</span><span>已完结</span></div>
+        </article>
+        <article class="card rec-card">
+          <div class="rec-cover">🕵️</div>
+          <h3>第七秒记忆</h3>
+          <div class="rec-tags"><span>悬疑</span><span>脑洞</span><span>反转</span></div>
+          <p class="rec-desc">男主每天只有七秒记忆，却要破解连环案，设定新颖，每集结尾都留钩子，适合一口气刷完。</p>
+          <div class="rec-meta"><span>🔥 热度 7.9w</span><span>更新至18集</span></div>
+        </article>
+        <article class="card rec-card">
+          <div class="rec-cover">🏙️</div>
+          <h3>我在都市当判官</h3>
+          <div class="rec-tags"><span>都市</span><span>异能</span><span>爽剧</span></div>
+          <p class="rec-desc">普通社畜意外获得读心术，专治职场PUA和奇葩邻居，代入感极强，弹幕都说解压。</p>
+          <div class="rec-meta"><span>🔥 热度 7.2w</span><span>更新至30集</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section id="update-section" style="margin: 48px 0;">
+      <div class="section-title">📺 最新更新动态 <span>今日已更</span></div>
+      <div class="section-sub">更新时间 2026年11月7日 · 每日手动整理</div>
+      <div class="update-list">
+        <div class="update-item"><span class="update-badge">第12集</span><div class="update-content"><h4>闪婚后，大叔每天狂宠我</h4><p>女主发现男主偷偷给自己公司注资，夫妻联手打脸反派。</p></div></div>
+        <div class="update-item"><span class="update-badge">第8集</span><div class="update-content"><h4>第七秒记忆</h4><p>新案件出现关键证人，但男主记忆再次重置，悬念升级。</p></div></div>
+        <div class="update-item"><span class="update-badge">全24集</span><div class="update-content"><h4>重生之王妃要休夫</h4><p>全集上线，大结局女主登基为女帝，男主甘愿为后。</p></div></div>
+        <div class="update-item"><span class="update-badge">第20集</span><div class="update-content"><h4>我在都市当判官</h4><p>男主用读心术揭穿公司内鬼，但能力开始失控。</p></div></div>
+        <div class="update-item"><span class="update-badge">第6集</span><div class="update-content"><h4>隔壁的钢琴声</h4><p>治愈系短剧，新搬来的邻居竟是童年白月光。</p></div></div>
+        <div class="update-item"><span class="update-badge">第14集</span><div class="update-content"><h4>破局者</h4><p>卧底身份暴露，正邪双方开始正面交锋。</p></div></div>
+        <div class="update-item"><span class="update-badge">第3集</span><div class="update-content"><h4>我的同桌是首富</h4><p>校园甜宠新剧，同桌隐藏富二代身份，笑点密集。</p></div></div>
+        <div class="update-item"><span class="update-badge">第10集</span><div class="update-content"><h4>时间循环恋人</h4><p>男主被困在同一天，唯一破解方法是让女主爱上他。</p></div></div>
+      </div>
+    </section>
+
+    <!-- 分类入口 -->
+    <section id="category-section" style="margin: 48px 0;">
+      <div class="section-title">🧭 分类入口 <span>按口味筛选</span></div>
+      <div class="section-sub">点击标签快速跳转，找到你喜欢的那一类</div>
+      <div class="category-grid">
+        <a href="/#hot-section" class="cat-item">💕 甜宠恋爱</a>
+        <a href="/#hot-section" class="cat-item">👑 古装逆袭</a>
+        <a href="/#hot-section" class="cat-item">🔍 悬疑推理</a>
+        <a href="/#hot-section" class="cat-item">🏙️ 都市异能</a>
+        <a href="/#hot-section" class="cat-item">😂 喜剧解压</a>
+        <a href="/#hot-section" class="cat-item">🌙 治愈情感</a>
+        <a href="/#hot-section" class="cat-item">⚡ 爽文改编</a>
+        <a href="/#hot-section" class="cat-item">🎭 现实题材</a>
+      </div>
+    </section>
+
+    <!-- 深度解析正文 -->
+    <section id="deep-dive" class="deep-dive">
+      <h2>深度解析 · 短剧的节奏与爽点密码</h2>
+      <p>如果你经常搜索<strong>糖心免费版</strong>，大概率已经发现，短剧和传统长剧的消费逻辑完全不同。短剧每集通常1-3分钟，前5秒就要抛出冲突或悬念，否则用户立刻划走。因此，一部短剧能否让人“上头”，核心在于<strong>信息密度</strong>和<strong>情绪节奏</strong>。我们观察了近期热门作品，大致可以分成两类：一类是强冲突+反转，比如《第七秒记忆》用记忆限制制造天然悬念；另一类是甜宠+日常，比如《闪婚后》靠密集互动和身份反差持续发糖。</p>
+      <p>从题材上看，甜宠和逆袭依然是基本盘，但新出现的“都市判官”类短剧把职场痛点与超能力结合，提供了更强的代入感。值得注意的是，短剧的表演和制作也在升级，部分头部作品已经用上了专业灯光和后期，观感明显好于早期粗制滥造的作品。对于观众来说，挑选短剧时可以先看前3集判断制作水准，再决定是否追更。</p>
+      <p>搜索<strong>糖心免费版</strong>的用户还可能关心：哪些剧已经完结可以一口气刷？哪些还在更新需要养肥？本页面在热门卡片和更新列表中明确标注了集数和状态，方便规划观看顺序。另外，不同平台的上线节奏也不一样，部分剧在小程序端先播，长视频平台后续跟播，我们会在资讯中同步动态。</p>
+      <p>短剧的“爽”并不是无脑，好的作品能在几分钟内完成人物弧光，甚至留下记忆点台词。像“重生王妃”里女主那句“本王妃要休夫，谁赞成谁反对”就很有传播力。建议新入坑的朋友从完结的高分短剧开始，比如《重生之王妃要休夫》和《破局者》，然后再追更连载中的作品，避免等更焦虑。</p>
+      <p>最后提醒：短剧虽好看，但注意用眼节奏。本站仅提供内容分析和推荐，不提供播放资源，所有剧集请通过正规平台观看。我们会持续更新榜单和深度分析，欢迎收藏本页随时查阅。</p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq-section" style="margin: 48px 0;">
+      <div class="section-title">❓ 常见问题 <span>编辑答疑</span></div>
+      <div class="section-sub">关于短剧选择、观看顺序和更新节奏的高频疑问</div>
+      <div class="faq-grid">
+        <div class="faq-item"><h3>糖心免费版是具体某个app吗？</h3><p>不是特指某一款应用，而是短剧内容聚合与推荐的专题概念。很多用户用它来搜索免费短剧信息，本页面就是围绕这一需求提供的导航与解析，帮助你找到热门剧集和观看线索。</p></div>
+        <div class="faq-item"><h3>怎么判断一部短剧值不值得追？</h3><p>建议先看前3集：如果冲突建立清晰、演员表演不尴尬、画面不过于廉价，基本可以继续。另外看更新频率，稳定日更或隔日更的剧通常制作方更靠谱。也可以参考本站热门榜和用户评论。</p></div>
+        <div class="faq-item"><h3>在哪里可以看到这些短剧？</h3><p>大部分短剧在主流短视频平台的小程序或短剧专区上线，部分也会在长视频平台播出。本站不提供播放链接，你可以根据剧名在对应平台搜索。注意选择正版渠道，支持创作者。</p></div>
+        <div class="faq-item"><h3>为什么有的短剧每集只有1分钟？</h3><p>这是短剧的典型特征，为了适配移动端碎片化观看和算法推荐，制作方会把每集时长压缩，通常20-40集讲完一个完整故事。节奏快、信息密度高，适合通勤或休息时刷。</p></div>
+        <div class="faq-item"><h3>已完结的短剧推荐哪几部？</h3><p>如果喜欢古装逆袭，可以看《重生之王妃要休夫》；喜欢悬疑烧脑，《破局者》已经完结；甜宠类《闪婚后》虽然还在更新，但已经放出大部分。你可以在热门推荐卡片查看状态标签。</p></div>
+        <div class="faq-item"><h3>如何第一时间知道更新？</h3><p>可以收藏本页面，我们每天整理最新更新动态；另外关注短剧官方账号或平台追剧功能也能收到提醒。页面中的「最新更新」区块会标注具体集数和剧情要点，方便快速浏览。</p></div>
+      </div>
+    </section>
+
+    <!-- 用户评论 -->
+    <section id="comment-section" style="margin: 48px 0;">
+      <div class="section-title">💬 用户短评 <span>真实社区讨论</span></div>
+      <div class="section-sub">来自短剧爱好者的追更感受与客观评价</div>
+      <div class="comment-grid">
+        <div class="comment-item"><div class="comment-head"><div class="avatar">糖</div><div class="comment-user">追剧小甜豆</div><div class="comment-date">11月5日</div></div><div class="comment-text">闪婚后大叔真的太上头了，每集都土甜土甜的，但就是停不下来，男女主颜值也在线。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">果</div><div class="comment-user">果粒橙</div><div class="comment-date">11月3日</div></div><div class="comment-text">重生王妃前几集很好看，后面稍微有点拖，不过瑕不掩瑜，女主搞事业太爽了。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">七</div><div class="comment-user">七秒记忆粉</div><div class="comment-date">11月6日</div></div><div class="comment-text">第七秒记忆的编剧脑洞真大，每次以为猜到结局就被打脸，就是更新太慢了不够看。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">都</div><div class="comment-user">都市打工人</div><div class="comment-date">11月2日</div></div><div class="comment-text">我在都市当判官有点意思，虽然逻辑不能细究，但解压是真的，适合下班不带脑子看。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">小</div><div class="comment-user">小葵花</div><div class="comment-date">10月28日</div></div><div class="comment-text">最近短剧质量越来越高了，画面和配音都比以前好，希望多出点悬疑题材。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">L</div><div class="comment-user">Luna</div><div class="comment-date">11月1日</div></div><div class="comment-text">有没有类似《破局者》的卧底剧推荐？看完剧荒了，求安利。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">大</div><div class="comment-user">大橘为重</div><div class="comment-date">10月30日</div></div><div class="comment-text">糖心免费版这个页面整理得挺清楚，找剧方便多了，希望保持更新。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">时</div><div class="comment-user">时间旅人</div><div class="comment-date">11月4日</div></div><div class="comment-text">《时间循环恋人》设定有点像土拨鼠之日，但拍出了自己的味道，女主很可爱。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">低</div><div class="comment-user">低调看剧</div><div class="comment-date">11月5日</div></div><div class="comment-text">有些短剧广告太多，正片没几分钟，希望推荐时能标注一下广告时长。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">柠</div><div class="comment-user">柠檬不酸</div><div class="comment-date">11月6日</div></div><div class="comment-text">隔壁的钢琴声好治愈，适合晚上睡前看，就是太短了不够看。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">A</div><div class="comment-user">Aria</div><div class="comment-date">10月29日</div></div><div class="comment-text">有没有人觉得最近古装短剧的服装都差不多？有点审美疲劳了。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">追</div><div class="comment-user">追更人</div><div class="comment-date">11月7日</div></div><div class="comment-text">今天更新了好几部，晚上有事干了，希望别烂尾。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">笑</div><div class="comment-user">笑看风云</div><div class="comment-date">11月1日</div></div><div class="comment-text">我的同桌是首富才第三集，感觉潜力不错，希望后期别注水。</div></div>
+        <div class="comment-item"><div class="comment-head"><div class="avatar">中</div><div class="comment-user">中年少女</div><div class="comment-date">10月27日</div></div><div class="comment-text">甜宠剧虽然套路但真的解压，忙了一天就想看点不用动脑的。</div></div>
+      </div>
+    </section>
+
+    <!-- 相关资讯 -->
+    <section id="news-section" style="margin: 48px 0;">
+      <div class="section-title">📰 相关资讯 <span>行业与剧集动态</span></div>
+      <div class="section-sub">短剧市场观察、新剧上线与平台政策</div>
+      <div class="news-grid">
+        <article class="card news-card"><span class="date">2026-11-07</span><h4>短剧备案新规落地，内容精品化成趋势</h4><p>近期多部短剧因制作精良获得平台流量扶持，粗制滥造作品逐渐被淘汰。</p></article>
+        <article class="card news-card"><span class="date">2026-11-06</span><h4>《第七秒记忆》加更，悬疑短剧热度飙升</h4><p>该剧因高能反转在社交平台引发讨论，平台宣布本周加更两集。</p></article>
+        <article class="card news-card"><span class="date">2026-11-05</span><h4>古装短剧《重生之王妃要休夫》出海东南亚</h4><p>国产短剧海外发行再下一城，古装逆袭题材在海外市场表现亮眼。</p></article>
+        <article class="card news-card"><span class="date">2026-11-04</span><h4>短视频平台推出短剧分账新政策</h4><p>优质短剧创作者分成比例提高，预计将吸引更多专业团队入场。</p></article>
+        <article class="card news-card"><span class="date">2026-11-02</span><h4>都市题材短剧回暖，现实共鸣成关键词</h4><p>《我在都市当判官》等剧带动都市异能细分类型关注度上升。</p></article>
+        <article class="card news-card"><span class="date">2026-10-30</span><h4>糖心免费版相关内容搜索量月增四成</h4><p>用户对短剧聚合推荐和避坑指南的需求明显增加，专题页访问量持续走高。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <h5>糖心免费版</h5>
+          <p>一个专注短剧内容推荐与深度解析的专题站点。我们聚合热门短剧信息，提供追更参考、类型导航和社区讨论，帮助你在碎片时间里发现好内容。</p>
+          <p style="font-size:0.75rem; color:#7a6e68;">本站不提供任何盗版资源链接，所有内容均来自公开信息与编辑整理，剧集请通过正规平台观看。</p>
+        </div>
+        <div>
+          <h5>快速导航</h5>
+          <div class="footer-links">
+            <a href="/#hot-section">热门推荐</a>
+            <a href="/#update-section">最新更新</a>
+            <a href="/#category-section">分类入口</a>
+            <a href="/#deep-dive">深度解析</a>
+            <a href="/#faq-section">常见问题</a>
+          </div>
+        </div>
+        <div>
+          <h5>友情链接</h5>
+          <div class="footer-links">
+            <a href="#">短剧观察</a>
+            <a href="#">影视风向标</a>
+            <a href="#">内容创作者联盟</a>
+            <a href="#">追剧指南</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 糖心免费版内容专题站 · 页面内容仅供参考 · 更新于 2026年11月7日
+      </div>
+    </div>
+  </footer>
+</body>
+                                                                                         </html>
